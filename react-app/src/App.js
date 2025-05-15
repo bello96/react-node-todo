@@ -20,9 +20,9 @@ function App() {
     try {
       setLoading(true);
       // 调用 API 获取所有 todos
-      const data = await fetchTodos();
+      const res = await fetchTodos();
       // 更新状态
-      setTodos(data);
+      setTodos(res.data);
       setError(null);
     } catch (err) {
       // 处理错误
@@ -59,7 +59,7 @@ function App() {
       });
 
       // 更新状态，替换更新后的 todo
-      setTodos(todos.map((todo) => (todo.id === id ? updatedTodo : todo)));
+      setTodos(todos.map((todo) => (todo.id === id ? updatedTodo.data : todo)));
     } catch (err) {
       setError("更新 Todo 状态失败");
       console.error("更新 Todo 错误:", err);
