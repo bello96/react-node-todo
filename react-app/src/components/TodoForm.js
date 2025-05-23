@@ -16,6 +16,8 @@ const TodoForm = ({ onAddTodo }) => {
       onAddTodo(title.trim());
       // 清空输入框
       setTitle('');
+    } else {
+      alert('请输入待办事项标题');
     }
   };
 

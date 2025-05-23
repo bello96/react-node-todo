@@ -38,12 +38,12 @@ function App() {
   const handleAddTodo = async (title) => {
     try {
       // 调用 API 添加新 todo
-      await addTodo(title);
+      const todo = await addTodo(title);
+      // 更新 todos 列表
+      setTodos((prevTodos) => [...prevTodos, todo.data]);
     } catch (err) {
       setError("添加 Todo 失败");
       console.error("添加 Todo 错误:", err);
-    } finally {
-      getTodos();
     }
   };
 
